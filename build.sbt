@@ -12,7 +12,9 @@ scalacOptions ++= Seq("-deprecation", "-feature")
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 
-libraryDependencies ++= Seq()
+libraryDependencies ++= Seq(
+  "net.codejitsu" %% "tasks-dsl" % "0.0.1-SNAPSHOT"
+)
 
 publishMavenStyle := false
 
