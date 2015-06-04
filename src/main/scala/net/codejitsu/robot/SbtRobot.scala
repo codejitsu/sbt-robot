@@ -37,8 +37,11 @@ object SbtRobot extends sbt.AutoPlugin {
       val (result, _, _) = task.run(verboseLevel)
 
       result match {
-        case Success(r) if r => Option(s"task '$name' ($description) completed successfully.")
-        case _ => None
+        case Success(r) if r =>
+          Option(s"task '$name' ($description) completed successfully.")
+        case _ =>
+          sys.error(s"task '$name' ($description) failed.")
+          None
       }
     }
   }
