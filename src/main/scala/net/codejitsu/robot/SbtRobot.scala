@@ -1,7 +1,6 @@
 package net.codejitsu.robot
 
-import net.codejitsu.tasks.dsl.TaskM
-import net.codejitsu.tasks.dsl.VerbosityLevel._
+import net.codejitsu.tasks.dsl.{Verbose, TaskM, VerbosityLevel}
 import sbt._
 
 import scala.util.Success
@@ -34,9 +33,9 @@ object SbtRobot extends sbt.AutoPlugin {
 
     (TaskKey[Option[String]](name, description) in Robot) <<= Def.task {
       println(s"running task '$name' ($description)")
-      val (result, _, _) = task.run(verboseLevel)
+      val result = task.run(verboseLevel)
 
-      result match {
+      result.res match {
         case Success(r) if r =>
           Option(s"task '$name' ($description) completed successfully.")
         case _ =>
