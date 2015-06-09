@@ -18,6 +18,8 @@ object SbtRobot extends sbt.AutoPlugin {
 
   import autoImport._
 
+  override def trigger = allRequirements
+
   /**
    * Adds new task to the 'Robot' configuration.
    *
