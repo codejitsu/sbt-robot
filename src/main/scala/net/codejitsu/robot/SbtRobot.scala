@@ -3,7 +3,7 @@ package net.codejitsu.robot
 import net.codejitsu.tasks.dsl.{Verbose, TaskM, VerbosityLevel}
 import sbt._
 
-import scala.util.Success
+import scala.util.{Failure, Success}
 
 /**
  * Sbt Robot plugin main class
@@ -40,8 +40,13 @@ object SbtRobot extends sbt.AutoPlugin {
       result.res match {
         case Success(r) if r =>
           Option(s"task '$name' ($description) completed successfully.")
-        case _ =>
-          sys.error(s"task '$name' ($description) failed.")
+        case Failure(_) =>
+          if (result.err.isEmpty) {
+            sys.error(s"task '$name' ($description) failed.")
+          } else {
+            sys.error(s"task '$name' ($description) failed. Last error: ${result.err.last}")
+          }
+
           None
       }
     }
