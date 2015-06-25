@@ -1,6 +1,6 @@
 sbt-robot
 =========
-```sbt-robot``` is a SBT-Plugin for custom (shell)-scripts/tasks defined and executed in SBT shell.
+```sbt-robot``` is a SBT-Plugin for custom (shell)-scripts/tasks defined and executed in SBT.
 
 It uses the ```tasks```-library for task definition (see https://github.com/codejitsu/tasks).
 
@@ -62,13 +62,16 @@ import SbtRobot._
 import DeploymentTasks._
 
 defineTask(deployApp, "deploy", "deploy webapp with status check")
+
+defineTask(restartCassandra, "restartCassandra", "restart Cassandra cluster")
 ``` 
 
 To install a task in ```Build.scala``` simply add the ```defineTask``` call to your Settings:
 
 ```scala
   lazy val deploySettings = Seq(
-    defineTask(deployApp, "deploy", "deploy webapp with status check")
+    defineTask(deployApp, "deploy", "deploy webapp with status check"),
+    defineTask(restartCassandra, "restartCassandra", "restart Cassandra cluster")
   )
 ```
 
@@ -132,6 +135,9 @@ All tasks can be combined together to produce a new task, for example:
     Sudo ~ Par ~ StopTomcat(hosts) andThen
     Sudo ~ Par ~ StartTomcat(hosts)
 ```
+
+Functional tasks composition with `andThen` is also short circuit upon error - when an error occurs during a task 
+then the rest of the script logic isn't executed and the result is a type containing the first error encountered.
 
 After adding ```defineTask(restartTomcats, "restartTomcats")``` your task is available in SBT shell: ```robot:restartTomcats```.
 
