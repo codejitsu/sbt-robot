@@ -41,10 +41,13 @@ object SbtRobot extends sbt.AutoPlugin {
         case Success(r) if r =>
           Option(s"task '$name' ($description) completed successfully.")
         case Failure(_) =>
-          if (result.err.isEmpty) {
+          if (result.err.isEmpty && result.out.isEmpty) {
             sys.error(s"task '$name' ($description) failed.")
           } else {
-            sys.error(s"task '$name' ($description) failed. Last error: ${result.err.last}")
+            val errLast = result.err.lastOption.getOrElse("no")
+            val outLast = result.out.lastOption.getOrElse("no")
+
+            sys.error(s"task '$name' ($description) failed. Last task error: '$errLast', output: '$outLast'")
           }
 
           None
