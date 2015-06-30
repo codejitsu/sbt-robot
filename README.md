@@ -31,6 +31,7 @@ object DeploymentTasks {
   val hosts = "my.host" | (1 to 4) | ".hosting.net"
 
   implicit val user = User.load
+  implicit val stage = new Dev
 
   val artifact = s"$name-$version.war"
   val webapps = "/tomcat/webapps"
@@ -92,6 +93,7 @@ Features
   * Universal tasks like ```Mkdir```, ```Upload```, ```CheckUrl``` available
 * Register common tasks like ```restartCassandra```
 * Run ```ssh``` tasks on multiple hosts in parallel      
+* Compile time access control for each tasks via explicit `stage` definition
   
 Get your artifact information
 ==============================
