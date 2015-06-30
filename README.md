@@ -93,7 +93,7 @@ Features
   * Universal tasks like ```Mkdir```, ```Upload```, ```CheckUrl``` available
 * Register common tasks like ```restartCassandra```
 * Run ```ssh``` tasks on multiple hosts in parallel      
-* Compile time access control for each tasks via explicit `stage` definition
+* Compile time access control for each task via explicit `stage` permissions
   
 Get your artifact information
 ==============================
