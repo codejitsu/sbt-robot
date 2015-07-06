@@ -4,8 +4,6 @@ organization := "net.codejitsu"
 
 name := "sbt-robot"
 
-version := "0.0.1-SNAPSHOT"
-
 scalaVersion := "2.10.4"
 
 scalacOptions ++= Seq("-deprecation", "-feature")
