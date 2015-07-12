@@ -26,18 +26,16 @@ object Settings extends Build {
   override lazy val settings = super.settings ++ buildSettings
 
   lazy val publishSettings = bintrayPublishSettings ++ Seq(
-    bintrayOrganization in bintray := None,
+    bintrayOrganization in bintray := Some("codejitsu"),
     bintrayPackageLabels in bintray := Seq("scala", "continuous deployment", "continuous integration", "shell", "sbt-plugin"),
     publishMavenStyle := false,
     bintrayRepository in bintray := "sbt-plugins",
+    bintrayPackage  in bintray := "sbt-robot",
+    bintrayReleaseOnPublish in bintray := false,
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
     publishTo := {
       publishTo.value /* Value set by bintray-sbt plugin */
     }
-  )
-
-  val parentSettings = buildSettings ++ publishSettings ++ Seq(
-    publishArtifact := false
   )
 
   val scalacSettings = Seq("-encoding", "UTF-8", s"-target:jvm-${Versions.JDKVer}", "-feature", "-language:_",

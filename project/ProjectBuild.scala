@@ -7,7 +7,7 @@ object ProjectBuild extends Build {
   lazy val root = Project(
     id = "root",
     base = file("."),
-    settings = parentSettings ++ defaultSettings ++ Seq(libraryDependencies ++= Dependencies.robotDeps)
+    settings = defaultSettings ++ Seq(libraryDependencies ++= Dependencies.robotDeps)
   )
 }
 
