@@ -13,7 +13,7 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 resolvers += "codejitsu at bintray" at "http://dl.bintray.com/codejitsu/maven"
 
 libraryDependencies ++= Seq(
-  "net.codejitsu" % "tasks-dsl_2.11" % "0.0.1"
+  "net.codejitsu" % "tasks-dsl_2.11" % "0.0.2"
 )
 
 publishMavenStyle := false
