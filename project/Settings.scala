@@ -26,7 +26,7 @@ object Settings extends Build {
   override lazy val settings = super.settings ++ buildSettings
 
   lazy val publishSettings = bintrayPublishSettings ++ Seq(
-    bintrayOrganization in bintray := Some("codejitsu"),
+    bintrayOrganization in bintray := None,
     bintrayPackageLabels in bintray := Seq("scala", "continuous deployment", "continuous integration", "shell", "sbt-plugin"),
     publishMavenStyle := false,
     bintrayRepository in bintray := "sbt-plugins",
