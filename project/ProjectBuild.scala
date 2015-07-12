@@ -4,8 +4,8 @@ import sbt._
 object ProjectBuild extends Build {
   import Settings._
 
-  lazy val root = Project(
-    id = "root",
+  lazy val sbtRobot = Project(
+    id = "sbt-robot",
     base = file("."),
     settings = defaultSettings ++ Seq(libraryDependencies ++= Dependencies.robotDeps)
   )
