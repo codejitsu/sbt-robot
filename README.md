@@ -18,7 +18,7 @@ resolvers += Resolver.url(
    "codejitsu-sbt-plugin-releases",
      url("https://dl.bintray.com/codejitsu/sbt-plugins"))(Resolver.ivyStylePatterns)
          
-addSbtPlugin("net.codejitsu" %% "sbt-robot" % "0.0.1")
+addSbtPlugin("net.codejitsu" % "sbt-robot" % "0.0.1")
 ```
 
 Define a task file in your ```project``` directory: for example ```DeploymentTasks.scala```.
