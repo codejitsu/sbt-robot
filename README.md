@@ -12,6 +12,12 @@ Installation
 Add the following line to your ```project/plugins.sbt``` file:
 
 ```scala
+resolvers += "codejitsu at bintray" at "http://dl.bintray.com/codejitsu/maven"
+
+resolvers += Resolver.url(
+   "codejitsu-sbt-plugin-releases",
+     url("https://dl.bintray.com/codejitsu/sbt-plugins"))(Resolver.ivyStylePatterns)
+         
 addSbtPlugin("net.codejitsu" %% "sbt-robot" % "0.0.1")
 ```
 
